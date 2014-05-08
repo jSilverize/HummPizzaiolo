@@ -1,7 +1,8 @@
-package hummpizzaiolo;
+package br.com.hummpizzaiolo;
 
 /*
- * @author markaoTribe and jSilverize
+ * @author MarkaoTribe
+ * @author jSilverize
  */
 
 public class HummPizzaiolo {
@@ -10,9 +11,9 @@ public class HummPizzaiolo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // i'm here
-        // Yeahhhhhhhh!
-        // Away
+
+        // TODO code application logic here
+        
     }
-    
+
 }
