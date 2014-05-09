@@ -12,7 +12,7 @@ public class HummPizzaiolo {
      */
     public static void main(String[] args) {
 
-        //Primeira mudança.
+        Menu.exibirMenu();
         
     }
 
