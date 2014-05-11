@@ -1,4 +1,4 @@
-package br.com.hummpizzaiolo;
+package br.com.hummpizzaiolo.view;
 
 /**
  *
@@ -10,7 +10,7 @@ public class Menu {
 
     static Scanner leia = new Scanner(System.in);
 
-    static void exibirMenu() {
+   public static void exibir() {
 
         int listaOpcoes;
 
