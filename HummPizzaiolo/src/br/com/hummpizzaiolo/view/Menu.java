@@ -18,8 +18,8 @@ public class Menu {
 
             System.out.print(" --- HUMM PIZZAIOLO --- ");
 
-            System.out.print("\nDigite uma das opções a seguir:  ");
             System.out.print("\n1 - PEDIDOS\n2 - CLIENTES\n3 - ITENS\n4 - FINALIZAR PROGRAMA\n");
+            System.out.print("\nDigite uma das opções acima ↑: \n");
 
             listaOpcoes = leia.nextInt();
 
@@ -29,6 +29,8 @@ public class Menu {
                     int pedidos;
                     pedidos = leia.nextInt();
                     switch (pedidos){
+                        case 0:
+                            pedidos = 0;
                         case 1:
                             
                             break;
@@ -42,7 +44,7 @@ public class Menu {
                             
                             break;
                         default:
-                            System.out.print("OPÇÃO INEXISTENTE");
+                            System.out.print("OPÇÃO INEXISTENTE\n");
                             listaOpcoes = 0;
                     break;
                     }
@@ -57,29 +59,30 @@ public class Menu {
                     Menu.sairMenu();
                     break;
                 default:
-                    System.out.print("OPÇÃO INEXISTENTE");
+                    System.out.print("OPÇÃO INEXISTENTE\n");
                     listaOpcoes = 0;
                     break;
             }
 
-        } while (listaOpcoes < 5);
+        } while (listaOpcoes > 0);
     }
 
     static void pedidosMenu() {
-        System.out.print("          PEDIDOS\nDigite uma das opções a seguir:");
-        System.out.print("\n1 - CADASTRAR\n2 - ALTERAR\n3 - EXCLUIR");
+        System.out.print(" --- PEDIDOS --- ");
+        Menu.miniMenu();
         int listaOpcoes = leia.nextInt();
     }
 
     static void clientesMenu() {
-        System.out.print("          CLIENTES\nDigite uma das opções a seguir:");
-        System.out.print("\n1 - CADASTRAR\n2 - ALTERAR\n3 - EXCLUIR");
+        System.out.print(" --- CLIENTES --- ");
+        Menu.miniMenu();
+
         int listaOpcoes = leia.nextInt();
     }
 
     static void itensMenu() {
-        System.out.print("          ITENS\nDigite uma das opções a seguir:");
-        System.out.print("\n1 - CADASTRAR\n2 - ALTERAR\n3 - EXCLUIR");
+        System.out.print(" --- ITENS --- ");
+        Menu.miniMenu();
         int listaOpcoes = leia.nextInt();
     }
     
@@ -88,5 +91,9 @@ public class Menu {
         int listaOpcoes = leia.nextInt();
         
     }
-
+    static void miniMenu(){
+         System.out.print("\n1 - CADASTRAR\n2 - ALTERAR\n3 - EXCLUIR\n0 MENU PRINCIPAL");
+         System.out.print("\nDigite uma das opções acima ↑: \n");
+    }
 }
+
