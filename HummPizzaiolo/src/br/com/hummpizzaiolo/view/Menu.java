@@ -32,16 +32,13 @@ public class Menu {
                         case 0:
                             pedidos = 0;
                         case 1:
-                            
+                            //FUNÇÃO CADASTRAR
                             break;
                         case 2:
-                            
+                            //FUNÇÃO ALTERAR
                             break;
                         case 3:
-                            
-                            break;
-                        case 4:
-                            
+                            //FUNÇÃO EXCLUIR
                             break;
                         default:
                             System.out.print("OPÇÃO INEXISTENTE\n");
@@ -55,9 +52,6 @@ public class Menu {
                 case 3:
                     Menu.itensMenu();
                     break;
-                case 4:
-                    Menu.sairMenu();
-                    break;
                 default:
                     System.out.print("OPÇÃO INEXISTENTE\n");
                     listaOpcoes = 0;
@@ -66,33 +60,24 @@ public class Menu {
 
         } while (listaOpcoes > 0);
     }
-
+            //FUNÇÕES 
     static void pedidosMenu() {
         System.out.print(" --- PEDIDOS --- ");
         Menu.miniMenu();
         int listaOpcoes = leia.nextInt();
     }
-
     static void clientesMenu() {
         System.out.print(" --- CLIENTES --- ");
         Menu.miniMenu();
-
         int listaOpcoes = leia.nextInt();
     }
-
     static void itensMenu() {
         System.out.print(" --- ITENS --- ");
         Menu.miniMenu();
         int listaOpcoes = leia.nextInt();
     }
-    
-    static void sairMenu(){
-        System.out.print("Sair");
-        int listaOpcoes = leia.nextInt();
-        
-    }
     static void miniMenu(){
-         System.out.print("\n1 - CADASTRAR\n2 - ALTERAR\n3 - EXCLUIR\n0 MENU PRINCIPAL");
+         System.out.print("\n1 - CADASTRAR\n2 - ALTERAR\n3 - EXCLUIR\n\n0 - RETORNAR AO MENU PRINCIPAL");
          System.out.print("\nDigite uma das opções acima ↑: \n");
     }
 }
