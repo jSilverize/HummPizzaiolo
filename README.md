@@ -1,6 +1,10 @@
 HummPizzaiolo
 =============
 
-Projeto de estudo
+Projeto de estudo de @MarkaoTribe e @jSilverize.
 
-import java.util.Scanner;
+
+Maiores Informações
+===================
+
+http://jsilverize.github.io/HummPizzaiolo
