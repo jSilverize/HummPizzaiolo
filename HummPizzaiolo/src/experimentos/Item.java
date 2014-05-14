@@ -26,10 +26,12 @@ public class Item {
     return item;
   }
 
-  static int cadastrar(Item[] listaItens, int pos, Item it) {
-    listaItens[pos] = it;
-    int nItens = 1;
-    return nItens;
+  static void cadastrar(Item[] listaItens, Item it) {
+    for (int i = 0; i < listaItens.length; i++) {
+      if (listaItens[i] == null) {
+        listaItens[i] = it;
+      }
+    }
   }
 
   static void listar(Item[] listaItens, int ultimo) {
@@ -48,7 +50,7 @@ public class Item {
     System.out.print("Nome, preco ou descricao: ");
     String valorBusca = HummPizzaiolo.leia.next();
     for (int i = 0; i < 50; i++) {
-      System.out.println("\t       RESULTADO");
+      System.out.println("\n\t       RESULTADO");
       if (listaItens[i].nome.equalsIgnoreCase(valorBusca) || listaItens[i].preco.equalsIgnoreCase(valorBusca) || listaItens[i].descricao.equalsIgnoreCase(valorBusca)) {
         System.out.println("ID: " + i);
         System.out.println("Nome: " + listaItens[i].nome);

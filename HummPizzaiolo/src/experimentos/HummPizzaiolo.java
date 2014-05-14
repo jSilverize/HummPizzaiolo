@@ -147,10 +147,8 @@ public class HummPizzaiolo {
           Item.buscar(listaItens);
           break;
         case 2:
-          System.out.println(ultimo + "\n");
           Item it = Item.lerDados();
-          ultimo = ultimo + Item.cadastrar(listaItens, ultimo, it);
-          System.out.println(ultimo + "\n");
+          Item.cadastrar(listaItens, it);
           break;
         case 3:
           int pos = Item.buscar(listaItens);
