@@ -4,6 +4,7 @@ import com.thoughtworks.xstream.XStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.util.Scanner;
 
 /*
  *  @author jsilverize
@@ -14,7 +15,7 @@ public class Item {
     String preco;
     String descricao;
 
-    static Item[] menu(Item[] listaItens) {
+    static void menu() {
 
         int listaOpcoes;
         int ultimo = 0;
@@ -24,7 +25,7 @@ public class Item {
             System.out.println("\n -------- HUMM PIZZAIOLO -------- ");
             System.out.println("\n\t       ITENS\n");
 
-            System.out.println("1 - CADASTRAR\n2 - ALTERAR\n3 - EXCLUIR\n4 - LISTA DE TODOS OS ITENS\n\n0 - MENU PRINCIPAL");
+            System.out.println("1 - CADASTRAR\n2 - ALTERAR\n3 - EXCLUIR\n4 - PROCURA DE ITENS\n\n0 - MENU PRINCIPAL");
             System.out.print("\nDigite uma das opções: ");
             listaOpcoes = HummPizzaiolo.leia.nextInt();
 
@@ -38,30 +39,35 @@ public class Item {
                     ultimo++;
                     break;
                 case 2:
-                    pos = itemBuscar(listaItens, ultimo);
-                    itemAlterar(listaItens, ultimo, pos);
+                    System.out.println("\n -------- HUMM PIZZAIOLO -------- ");
+                    System.out.println("\n\t  ALTERAR ITENS\n");
+                    String arquivoAlterar = HummPizzaiolo.leia.next();
+                    System.out.println(lerXML(arquivoAlterar));
+                    Item novoIt = itemLerDados();
+                    itemCadastrar(novoIt);
                     break;
                 case 3:
-                    pos = itemBuscar(listaItens, ultimo);
-                    if (pos > -1) {
-                        System.out.println("Item Excluido.");
-                        itemExcluir(listaItens, ultimo, pos);
-                        ultimo--;
-                    } else {
-                        System.out.println("Nao foi possivel encontrar este item.");
-                    }
+                    /*pos = itemBuscar(ultimo);
+                     if (pos > -1) {
+                     System.out.println("Item Excluido.");
+                     itemExcluir(ultimo, pos);
+                     ultimo--;
+                     } else {
+                     System.out.println("Nao foi possivel encontrar este item.");
+                     }*/
 
                     break;
                 case 4:
-                    itemListar(listaItens, ultimo);
+                    System.out.println("\n -------- HUMM PIZZAIOLO -------- ");
+                    System.out.println("\n\t  PROCURA DE ITENS\n");
+                    String procurarArquivo = HummPizzaiolo.leia.next();
+                    System.out.println(lerXML(procurarArquivo));
                     break;
                 default:
                     System.out.println("Favor digitar uma opcao valida.\n");
                     break;
             }
         } while (listaOpcoes > 0);
-
-        return listaItens;
 
     }
 
@@ -89,60 +95,59 @@ public class Item {
         gravarXML(novoItem, it.nome);
     }
 
-    static void itemListar(Item[] listaItens, int ultimo) {
-        System.out.println("\n -------- HUMM PIZZAIOLO -------- ");
-        System.out.println("\n\t  LISTA DE ITENS\n");
-        for (int i = 0; i < ultimo; i++) {
-            System.out.println("Item ID: " + i);
-            System.out.println("Nome: " + listaItens[i].nome);
-            System.out.println("Preço: " + listaItens[i].preco);
-            System.out.println();
-        }
-        System.out.println();
-    }
+    /*static void itemListar(int ultimo) {
+     System.out.println("\n -------- HUMM PIZZAIOLO -------- ");
+     System.out.println("\n\t  LISTA DE ITENS\n");
+     for (int i = 0; i < ultimo; i++) {
+     System.out.println("Item ID: " + i);
+     System.out.println("Nome: " + listaItens[i].nome);
+     System.out.println("Preço: " + listaItens[i].preco);
+     System.out.println();
+     }
+     System.out.println();
+     }*/
 
-    static int itemBuscar(Item[] listaItens, int ultimo) {
-        System.out.println("\n -------- HUMM PIZZAIOLO -------- ");
-        System.out.println("\n\t  BUSCA DE ITEM\n");
-        System.out.print("Nome: ");
-        String nome = HummPizzaiolo.leia.nextLine();
-        for (int i = 0; i < ultimo; i++) {
-            if (listaItens[i].nome.equalsIgnoreCase(nome)) {
-                System.out.println("Item ID: " + i);
-                System.out.println("Nome: " + listaItens[i].nome);
-                System.out.println("Preco: " + listaItens[i].preco);
-                System.out.println("Descricao: " + listaItens[i].descricao);
-                System.out.println();
-                return i;
-            }
-        }
-        return -1;
-    }
+    /*static int itemBuscar(Item[] listaItens, int ultimo) {
+     System.out.println("\n -------- HUMM PIZZAIOLO -------- ");
+     System.out.println("\n\t  BUSCA DE ITEM\n");
+     System.out.print("Nome: ");
+     String nome = HummPizzaiolo.leia.nextLine();
+     for (int i = 0; i < ultimo; i++) {
+     if (listaItens[i].nome.equalsIgnoreCase(nome)) {
+     System.out.println("Item ID: " + i);
+     System.out.println("Nome: " + listaItens[i].nome);
+     System.out.println("Preco: " + listaItens[i].preco);
+     System.out.println("Descricao: " + listaItens[i].descricao);
+     System.out.println();
+     return i;
+     }
+     }
+     return -1;
+     }*/
 
-    static void itemAlterar(Item[] listaItens, int ultimo, int pos) {
-        System.out.println("\n -------- HUMM PIZZAIOLO -------- ");
-        System.out.println("\n\t  ALTERAR ITEM\n");
-        System.out.println("Item ID: " + pos);
-        System.out.println("Nome: " + listaItens[pos].nome);
-        System.out.println("Preco: " + listaItens[pos].preco);
-        System.out.println("Descricao: " + listaItens[pos].descricao);
-        System.out.println();
+    /*static void itemAlterar(Item[] listaItens, int ultimo, int pos) {
+     System.out.println("\n -------- HUMM PIZZAIOLO -------- ");
+     System.out.println("\n\t  ALTERAR ITEM\n");
+     System.out.println("Item ID: " + pos);
+     System.out.println("Nome: " + listaItens[pos].nome);
+     System.out.println("Preco: " + listaItens[pos].preco);
+     System.out.println("Descricao: " + listaItens[pos].descricao);
+     System.out.println();
 
-        System.out.print("Novo Nome: ");
-        listaItens[pos].nome = HummPizzaiolo.leia.next();
-        System.out.print("Novo Preco: ");
-        listaItens[pos].preco = HummPizzaiolo.leia.next();
-        System.out.print("Nova Descricao: ");
-        listaItens[pos].descricao = HummPizzaiolo.leia.next();
-    }
+     System.out.print("Novo Nome: ");
+     listaItens[pos].nome = HummPizzaiolo.leia.next();
+     System.out.print("Novo Preco: ");
+     listaItens[pos].preco = HummPizzaiolo.leia.next();
+     System.out.print("Nova Descricao: ");
+     listaItens[pos].descricao = HummPizzaiolo.leia.next();
+     }
 
-    static void itemExcluir(Item[] listaItens, int ultimo, int pos) {
-        for (int i = pos + 1; i < ultimo; i++) {
-            listaItens[i - 1] = listaItens[i];
-        }
-        listaItens[ultimo - 1] = null;
-    }
-
+     static void itemExcluir(Item[] listaItens, int ultimo, int pos) {
+     for (int i = pos + 1; i < ultimo; i++) {
+     listaItens[i - 1] = listaItens[i];
+     }
+     listaItens[ultimo - 1] = null;
+     }*/
     public static void gravarXML(String xml, String nome) {
         try {
             FileWriter w = new FileWriter("item" + nome + ".xml");
@@ -151,6 +156,21 @@ public class Item {
         } catch (Exception e) {
             System.out.println("Erro ao gravar o xml. \n" + e);
         }
+    }
+
+    public static String lerXML(String nomeArquivo) {
+        try {
+            Scanner in = new Scanner(new File("item" + nomeArquivo + ".xml"));
+            StringBuilder sb = new StringBuilder();
+            while (in.hasNext()) {
+                sb.append(in.next() + "\n");
+            }
+            in.close();
+            return sb.toString();
+        } catch (Exception e) {
+            System.out.println("Erro: " + e);
+        }
+        return "";
     }
 
 }

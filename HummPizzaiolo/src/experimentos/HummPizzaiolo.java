@@ -10,8 +10,6 @@ public class HummPizzaiolo {
 
     public static void main(String[] args) throws FileNotFoundException {
 
-        Item[] listaItens = new Item[50];
-
         int listaOpcoes;
 
         do {
@@ -34,7 +32,7 @@ public class HummPizzaiolo {
                     clientesMenu();
                     break;
                 case 3:
-                    listaItens = Item.menu(listaItens);
+                    Item.menu();
                     break;
                 default:
                     System.out.println("Favor digitar uma opcao valida.\n");
