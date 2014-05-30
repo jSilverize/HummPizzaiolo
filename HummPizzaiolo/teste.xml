@@ -1,8 +1,0 @@
-<com.senac.pi.Pessoa>
-  <nome>Alessandra Lima</nome>
-  <email>alessandra.laguiar@sp.senac.br</email>
-  <telefone>
-    <codigo>11</codigo>
-    <numero>5555-9990</numero>
-  </telefone>
-</com.senac.pi.Pessoa>

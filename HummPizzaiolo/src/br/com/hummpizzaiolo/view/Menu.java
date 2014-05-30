@@ -2,7 +2,7 @@ package br.com.hummpizzaiolo.view;
 
 import br.com.hummpizzaiolo.HummPizzaiolo;
 import static br.com.hummpizzaiolo.HummPizzaiolo.leia;
-import br.com.hummpizzaiolo.model.Item;
+import br.com.hummpizzaiolo.Item;
 import java.util.Scanner;
 
 /*
