@@ -1,10 +1,10 @@
 package br.com.hummpizzaiolo;
 
 import com.thoughtworks.xstream.XStream;
-import br.com.hummpizzaiolo.HummPizzaiolo;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 /*
@@ -16,7 +16,7 @@ public class Cliente {
   String telefone;
   String endereco;
 
-  public static void menu() {
+  public static void menu()  {
 
     Cliente[] lista = new Cliente[50];
 
@@ -88,11 +88,11 @@ public class Cliente {
     Cliente cliente = new Cliente();
     System.out.println("\n------ Novo Cliente ------");
     System.out.print("Nome: ");
-    cliente.nome = leia.nextLine();
+    cliente.nome = leia.nextLine().trim();
     System.out.print("Telefone: ");
-    cliente.telefone = leia.nextLine();
+    cliente.telefone = leia.nextLine().trim();
     System.out.print("Endereco: ");
-    cliente.endereco = leia.nextLine();
+    cliente.endereco = leia.nextLine().trim();
     return cliente;
   }
 
@@ -111,7 +111,7 @@ public class Cliente {
   static int buscarCliente(Cliente[] lista, int ultimo) {
     System.out.println("\n------ Buscar Cliente ------\n");
     System.out.print("Nome: ");
-    String nome = leia.nextLine();
+    String nome = leia.nextLine().trim();
     for (int i = 0; i < ultimo; i++) {
       if (lista[i].nome.equals(nome)) {
         return i;
@@ -126,9 +126,9 @@ public class Cliente {
     System.out.print("Novo Nome: ");
     lista[pos].nome = leia.nextLine();
     System.out.print("Novo Telefone: ");
-    lista[pos].telefone = leia.nextLine();    
+    lista[pos].telefone = leia.nextLine().trim();    
     System.out.print("Novo Endereco: ");
-    lista[pos].endereco = leia.nextLine();
+    lista[pos].endereco = leia.nextLine().trim();
   }
 
   static void removerCliente(Cliente[] lista, int ultimo, int pos) {
@@ -150,7 +150,7 @@ public class Cliente {
       FileWriter w = new FileWriter("ClientesCadastrados.xml");
       w.write(xml);
       w.close();
-    } catch (Exception e) {
+    } catch (IOException e) {
       System.out.println("Erro ao gravar o xml. \n" + e);
     }
   }

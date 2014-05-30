@@ -1,14 +1,10 @@
 <br.com.hummpizzaiolo.Item-array>
   <br.com.hummpizzaiolo.Item>
-    <nome>Pizza
-de
-Mussarela</nome>
+    <nome>Pizza de Mussarela</nome>
     <preco>40</preco>
   </br.com.hummpizzaiolo.Item>
   <br.com.hummpizzaiolo.Item>
-    <nome>Pizza
-de
-Calabresa</nome>
+    <nome>Pizza de Calabresa</nome>
     <preco>40</preco>
   </br.com.hummpizzaiolo.Item>
   <br.com.hummpizzaiolo.Item>

@@ -1,7 +1,6 @@
 package br.com.hummpizzaiolo;
 
 import com.thoughtworks.xstream.XStream;
-import br.com.hummpizzaiolo.HummPizzaiolo;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -88,9 +87,9 @@ public class Item {
     Item item = new Item();
     System.out.println("\n------ Novo Item ------");
     System.out.print("Nome: ");
-    item.nome = leia.nextLine();
+    item.nome = leia.nextLine().trim();
     System.out.print("Preco: ");
-    item.preco = leia.nextLine();
+    item.preco = leia.nextLine().trim();
     return item;
   }
 
@@ -109,7 +108,7 @@ public class Item {
   static int buscarItem(Item[] prateleira, int ultimo) {
     System.out.println("\n------ Buscar Item ------\n");
     System.out.print("Nome: ");
-    String nome = leia.nextLine();
+    String nome = leia.nextLine().trim();
     for (int i = 0; i < ultimo; i++) {
       if (prateleira[i].nome.equals(nome)) {
         return i;
@@ -122,9 +121,9 @@ public class Item {
     System.out.println("\n------ Alteração de Item ------\n");
     System.out.println("Item: " + prateleira[pos].nome + "\nPreço: " + prateleira[pos].preco);
     System.out.print("Novo Nome: ");
-    prateleira[pos].nome = leia.nextLine();
+    prateleira[pos].nome = leia.nextLine().trim();
     System.out.print("Novo Preco: ");
-    prateleira[pos].preco = leia.nextLine();
+    prateleira[pos].preco = leia.nextLine().trim();
   }
 
   static void removerItem(Item[] prateleira, int ultimo, int pos) {
@@ -160,7 +159,7 @@ public class Item {
       }
       in.close();
       return sb.toString();
-    } catch (Exception e) {
+    } catch (FileNotFoundException e) {
       System.out.println("Erro: " + e);
     }
     return "";

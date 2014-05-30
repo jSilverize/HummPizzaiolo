@@ -1,12 +1,8 @@
 <br.com.hummpizzaiolo.Cliente-array>
   <br.com.hummpizzaiolo.Cliente>
-    <nome>Udimberto
-Junior</nome>
+    <nome>Udimberto Junior</nome>
     <telefone>5555-5555</telefone>
-    <endereco>Estrada
-do
-M&apos;Boi
-Mirim</endereco>
+    <endereco>Estrada do M&apos;Boi Mirim</endereco>
   </br.com.hummpizzaiolo.Cliente>
   <null/>
   <null/>
