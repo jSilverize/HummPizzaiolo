@@ -1,8 +1,136 @@
 <br.com.hummpizzaiolo.Pedido-array>
-  <null/>
-  <null/>
-  <null/>
-  <null/>
+  <br.com.hummpizzaiolo.Pedido>
+    <id>0</id>
+    <cliente>
+      <id>1</id>
+      <nome>Udimberto Junior</nome>
+      <telefone>4444-4444</telefone>
+      <endereco>Casa</endereco>
+    </cliente>
+    <itens>
+      <br.com.hummpizzaiolo.Item>
+        <id>0</id>
+        <nome>Pizza de Flango</nome>
+        <preco>40.0</preco>
+      </br.com.hummpizzaiolo.Item>
+      <br.com.hummpizzaiolo.Item>
+        <id>0</id>
+        <nome>Pizza de Atum</nome>
+        <preco>40.0</preco>
+      </br.com.hummpizzaiolo.Item>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+    </itens>
+    <totalPedido>0.0</totalPedido>
+  </br.com.hummpizzaiolo.Pedido>
+  <br.com.hummpizzaiolo.Pedido>
+    <id>1</id>
+    <cliente>
+      <id>0</id>
+      <nome>Marcos Vinicius</nome>
+      <telefone>5555-5555</telefone>
+      <endereco>Casa</endereco>
+    </cliente>
+    <itens>
+      <br.com.hummpizzaiolo.Item>
+        <id>2</id>
+        <nome>Pizza de Flango</nome>
+        <preco>40.0</preco>
+      </br.com.hummpizzaiolo.Item>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+    </itens>
+    <totalPedido>0.0</totalPedido>
+  </br.com.hummpizzaiolo.Pedido>
+  <br.com.hummpizzaiolo.Pedido>
+    <id>2</id>
+    <cliente>
+      <id>0</id>
+      <nome>Marcos Vinicius</nome>
+      <telefone>5555-5555</telefone>
+      <endereco>Casa</endereco>
+    </cliente>
+    <itens>
+      <br.com.hummpizzaiolo.Item>
+        <id>1</id>
+        <nome>Pizza de Calabresa</nome>
+        <preco>40.0</preco>
+      </br.com.hummpizzaiolo.Item>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+    </itens>
+    <totalPedido>40.0</totalPedido>
+  </br.com.hummpizzaiolo.Pedido>
+  <br.com.hummpizzaiolo.Pedido>
+    <id>3</id>
+    <cliente>
+      <id>1</id>
+      <nome>Udimberto Junior</nome>
+      <telefone>4444-4444</telefone>
+      <endereco>Casa</endereco>
+    </cliente>
+    <itens>
+      <br.com.hummpizzaiolo.Item>
+        <id>2</id>
+        <nome>Pizza de Flango</nome>
+        <preco>40.0</preco>
+      </br.com.hummpizzaiolo.Item>
+      <br.com.hummpizzaiolo.Item>
+        <id>0</id>
+        <nome>Pizza de Mussarela</nome>
+        <preco>40.0</preco>
+      </br.com.hummpizzaiolo.Item>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+      <null/>
+    </itens>
+    <totalPedido>80.0</totalPedido>
+  </br.com.hummpizzaiolo.Pedido>
   <null/>
   <null/>
   <null/>

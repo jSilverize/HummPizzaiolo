@@ -10,9 +10,10 @@ import java.util.Scanner;
  * @author jsilverize & markaotribe
  */
 public class Item {
-
+  
+  int id;
   String nome;
-  String preco;
+  float preco;
   String descricao;
 
   static String xml = lerXML();
@@ -88,7 +89,7 @@ public class Item {
     System.out.print("Nome: ");
     item.nome = leia.nextLine().trim();
     System.out.print("Preco: ");
-    item.preco = leia.nextLine().trim();
+    item.preco = leia.nextFloat();
     return item;
   }
 
@@ -122,7 +123,7 @@ public class Item {
     System.out.print("Novo Nome: ");
     prateleira[pos].nome = leia.nextLine().trim();
     System.out.print("Novo Preço: ");
-    prateleira[pos].preco = leia.nextLine().trim();
+    prateleira[pos].preco = leia.nextFloat();
   }
 
   static void removerItem(Item[] prateleira, int ultimo, int pos) {

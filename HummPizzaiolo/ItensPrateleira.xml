@@ -1,18 +1,22 @@
 <br.com.hummpizzaiolo.Item-array>
   <br.com.hummpizzaiolo.Item>
+    <id>0</id>
     <nome>Pizza de Mussarela</nome>
     <preco>40</preco>
   </br.com.hummpizzaiolo.Item>
   <br.com.hummpizzaiolo.Item>
+    <id>1</id>
     <nome>Pizza de Calabresa</nome>
     <preco>40</preco>
   </br.com.hummpizzaiolo.Item>
   <br.com.hummpizzaiolo.Item>
-    <nome>Pizza de Atum</nome>
+    <id>2</id>
+    <nome>Pizza de Flango</nome>
     <preco>40</preco>
   </br.com.hummpizzaiolo.Item>
   <br.com.hummpizzaiolo.Item>
-    <nome>Pizza de Flango</nome>
+    <id>3</id>    
+    <nome>Pizza de Atum</nome>
     <preco>40</preco>
   </br.com.hummpizzaiolo.Item>
   <null/>

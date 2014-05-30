@@ -11,7 +11,8 @@ import java.util.Scanner;
  * @author jsilverize & markaotribe
  */
 public class Cliente {
-
+  
+  int id;
   String nome;
   String telefone;
   String endereco;
@@ -39,7 +40,7 @@ public class Cliente {
       switch (listaOpcoes) {
         case 1:
           // adicionar cliente
-          Cliente cli = lerCliente();
+          Cliente cli = lerCliente(ultimo);
           adicionarCliente(lista, ultimo, cli);
           ultimo++;
           break;
@@ -68,13 +69,13 @@ public class Cliente {
           break;
         case 4:
           //lista clientes
-          listarItens(lista, ultimo);
+          listarClientes(lista, ultimo);
           break;
         default:
           System.out.println("Opcao Invalida!");
         case 0:
           // salva um arquivo XML com todos os cliens registrados
-          salvarItens(lista);
+          salvarClientes(lista);
           break;
       }
 
@@ -83,9 +84,10 @@ public class Cliente {
   }
 
   // FUNÇÕES de ITEM
-  static Cliente lerCliente() {
+  static Cliente lerCliente(int ultimo) {
     Cliente cliente = new Cliente();
     System.out.println("\n------ Novo Cliente ------");
+    cliente.id = ultimo;
     System.out.print("Nome: ");
     cliente.nome = leia.nextLine().trim();
     System.out.print("Telefone: ");
@@ -99,10 +101,10 @@ public class Cliente {
     lista[pos] = cli;
   }
 
-  static void listarItens(Cliente[] lista, int ultimo) {
+  static void listarClientes(Cliente[] lista, int ultimo) {
     System.out.println("\n------ Lista de Clientes ------\n");
     for (int i = 0; i < ultimo; i++) {
-      System.out.println("ID: " + i + "\nNome: " + lista[i].nome + "\nTelefone: " + lista[i].telefone + "\nEndereco: " + lista[i].endereco);
+      System.out.println("ID: " + lista[i].id + "\nNome: " + lista[i].nome + "\nTelefone: " + lista[i].telefone + "\nEndereco: " + lista[i].endereco);
     }
     System.out.println("\n");
   }
@@ -118,10 +120,22 @@ public class Cliente {
     }
     return -1;
   }
+  
+  static Cliente buscarClienteNome() {
+    System.out.println("\n------ Buscar Cliente ------\n");
+    System.out.print("Nome: ");
+    String nome = leia.nextLine().trim();
+    for (int i = 0; i < ultimo; i++) {
+      if (lista[i].nome.equalsIgnoreCase(nome)) {
+        return lista[i];
+      }
+    }
+    return lista[-1];
+  }
 
   static void alterarCliente(Cliente[] lista, int ultimo, int pos) {
     System.out.println("\n------ Alteração de Cliente ------\n");
-    System.out.println("Cliente: " + lista[pos].nome + "\nTelefone: " + lista[pos].telefone + "\nEndereco: " + lista[pos].endereco);
+    System.out.println("ID: " + lista[pos].id + "\nCliente: " + lista[pos].nome + "\nTelefone: " + lista[pos].telefone + "\nEndereco: " + lista[pos].endereco);
     System.out.print("Novo Nome: ");
     lista[pos].nome = leia.nextLine();
     System.out.print("Novo Telefone: ");
@@ -137,7 +151,7 @@ public class Cliente {
     lista[ultimo - 1] = null;
   }
 
-  static void salvarItens(Cliente[] cli) {
+  static void salvarClientes(Cliente[] cli) {
     XStream xstream = new XStream();
     String novoCliente;
     novoCliente = xstream.toXML(cli);
