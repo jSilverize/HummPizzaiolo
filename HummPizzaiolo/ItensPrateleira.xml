@@ -11,7 +11,10 @@
     <nome>Pizza de Atum</nome>
     <preco>40</preco>
   </br.com.hummpizzaiolo.Item>
-  <null/>
+  <br.com.hummpizzaiolo.Item>
+    <nome>Pizza de Flango</nome>
+    <preco>40</preco>
+  </br.com.hummpizzaiolo.Item>
   <null/>
   <null/>
   <null/>

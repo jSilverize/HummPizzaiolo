@@ -24,7 +24,7 @@ public class HummPizzaiolo {
         case 0:
           break;
         case 1:
-          // Pedido.menu();
+          Pedido.menu();
           break;
         case 2:
           Cliente.menu();

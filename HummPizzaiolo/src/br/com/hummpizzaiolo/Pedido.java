@@ -10,14 +10,14 @@ import java.util.Scanner;
  * @author jsilverize & markaotribe
  */
 public class Pedido {
-  
-  String donoPedido;
-  String itensPedido;
-  int totalPedido;
+
+  int donoPedido;
+  static String[] itensPedido = new String[15];
+  float totalPedido;
 
   public static void menu() {
 
-    Pedido[] fila = new Pedido[50];
+    Pedido[] fila = new Pedido[100];
 
     String xml = lerXML();
 
@@ -46,13 +46,15 @@ public class Pedido {
         case 2:
           //altera os dados de um pedido
           // busca o pedido a ser alterado
-          pos = buscarPedido(fila, ultimo);
-          if (pos > -1) {
-            alterarPedido(fila, ultimo, pos);
-            System.out.println("Pedido Alterado!");
-          } else {
-            System.out.println("Pedido Inexistente!");
-          }
+          /*
+           pos = buscarPedido(fila, ultimo);
+           if (pos > -1) {
+           alterarPedido(fila, ultimo, pos);
+           System.out.println("Pedido Alterado!");
+           } else {
+           System.out.println("Pedido Inexistente!");
+           }
+           */
           break;
         case 3:
           // remove um pedido
@@ -82,14 +84,26 @@ public class Pedido {
 
   }
 
-  // FUNÇÕES de ITEM
+  // FUNÇÕES de PEDIDO
+  static String[] variosItens(String[] itensPedido, int buscarItem) {
+    byte opcaoMenu;
+    int i = 0;
+    do {
+      if (itensPedido[i] == null) {
+        itensPedido[i] = Item.prateleira[buscarItem].nome;
+        i++;
+      }
+      System.out.print("\n0 - Encerrar Pedido\n1 - Adicionar Item\nDigite sua opcao: ");
+      opcaoMenu = leia.nextByte();
+    } while (opcaoMenu > 0);
+    return itensPedido;
+  }
+
   static Pedido lerPedido() {
     Pedido pedido = new Pedido();
     System.out.println("\n------ Novo Pedido ------");
-    System.out.print("Nome: ");
-    pedido.nome = leia.nextLine();
-    System.out.print("Preco: ");
-    pedido.preco = leia.nextLine();
+    pedido.donoPedido = Cliente.buscarCliente();
+    variosItens(itensPedido, Item.buscarItem());
     return pedido;
   }
 
@@ -100,7 +114,16 @@ public class Pedido {
   static void listarPedidos(Pedido[] fila, int ultimo) {
     System.out.println("\n------ Lista de Pedidos ------\n");
     for (int i = 0; i < ultimo; i++) {
-      System.out.println("Pedido: " + fila[i].nome + "\nPreço: " + fila[i].preco);
+      System.out.println("Nº Pedido: " + i);
+      System.out.println("Cliente: " + Cliente.lista[fila[i].donoPedido].nome);
+      for (int j = 0; j < 15; j++) {
+        if(itensPedido[j] != null) {
+          System.out.println("Item: " + fila[i].itensPedido[j]);
+        } else {
+          System.out.println("Item: Não encontrado");
+          j = 15;
+        }
+      }
     }
     System.out.println();
   }
@@ -108,24 +131,25 @@ public class Pedido {
   static int buscarPedido(Pedido[] fila, int ultimo) {
     System.out.println("\n------ Buscar Pedido ------\n");
     System.out.print("Nome: ");
-    String nome = leia.nextLine();
+    int donoPedidoBuscar = Cliente.buscarCliente();
     for (int i = 0; i < ultimo; i++) {
-      if (fila[i].nome.equals(nome)) {
+      if (fila[i].donoPedido == donoPedidoBuscar) {
         return i;
       }
     }
     return -1;
   }
 
-  static void alterarPedido(Pedido[] fila, int ultimo, int pos) {
-    System.out.println("\n------ Alteração de Pedido ------\n");
-    System.out.println("Pedido: " + fila[pos].nome + "\nPreço: " + fila[pos].preco);
-    System.out.print("Novo Nome: ");
-    fila[pos].nome = leia.nextLine();
-    System.out.print("Novo Preco: ");
-    fila[pos].preco = leia.nextLine();
-  }
-
+  /*
+   static void alterarPedido(Pedido[] fila, int ultimo, int pos) {
+   System.out.println("\n------ Alteração de Pedido ------\n");
+   System.out.println("Pedido: " + fila[pos].nome + "\nPreço: " + fila[pos].preco);
+   System.out.print("Novo Nome: ");
+   fila[pos].nome = leia.nextLine();
+   System.out.print("Novo Preco: ");
+   fila[pos].preco = leia.nextLine();
+   }
+   */
   static void removerPedido(Pedido[] fila, int ultimo, int pos) {
     for (int i = pos + 1; i < ultimo; i++) {
       fila[i - 1] = fila[i];
@@ -133,16 +157,16 @@ public class Pedido {
     fila[ultimo - 1] = null;
   }
 
-  static void salvarPedidos(Pedido[] it) {
+  static void salvarPedidos(Pedido[] pedido) {
     XStream xstream = new XStream();
     String novoPedido;
-    novoPedido = xstream.toXML(it);
+    novoPedido = xstream.toXML(pedido);
     gravarXML(novoPedido);
   }
 
   public static void gravarXML(String xml) {
     try {
-      FileWriter w = new FileWriter("PedidosPrateleira.xml");
+      FileWriter w = new FileWriter("FilaPedidos.xml");
       w.write(xml);
       w.close();
     } catch (Exception e) {
@@ -152,7 +176,7 @@ public class Pedido {
 
   public static String lerXML() {
     try {
-      Scanner in = new Scanner(new File("filaPedidos.xml"));
+      Scanner in = new Scanner(new File("FilaPedidos.xml"));
       StringBuilder sb = new StringBuilder();
       while (in.hasNext()) {
         sb.append(in.next() + "\n");

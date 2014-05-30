@@ -15,16 +15,15 @@ public class Item {
   String preco;
   String descricao;
 
+  static String xml = lerXML();
+
+  static Item[] prateleira = deserializarXML(xml);
+
+  static int ultimo = verificarArray(prateleira);
+
   public static void menu() {
 
-    Item[] prateleira = new Item[50];
-
-    String xml = lerXML();
-
-    prateleira = deserializarXML(xml);
-
     int listaOpcoes;
-    int ultimo = verificarArray(prateleira);
 
     do {
       System.out.println("\n-------- HUMM PIZZAIOLO --------");
@@ -46,7 +45,7 @@ public class Item {
         case 2:
           //altera os dados de um item
           // busca o item a ser alterado
-          pos = buscarItem(prateleira, ultimo);
+          pos = buscarItem();
           if (pos > -1) {
             alterarItem(prateleira, ultimo, pos);
             System.out.println("Item Alterado!");
@@ -57,7 +56,7 @@ public class Item {
         case 3:
           // remove um item
           // busca o item a ser removido
-          pos = buscarItem(prateleira, ultimo);
+          pos = buscarItem();
           if (pos > -1) {
             removerItem(prateleira, ultimo, pos);
             ultimo--;
@@ -100,17 +99,17 @@ public class Item {
   static void listarItens(Item[] prateleira, int ultimo) {
     System.out.println("\n------ Lista de Items ------\n");
     for (int i = 0; i < ultimo; i++) {
-      System.out.println("Item: " + prateleira[i].nome + "\nPreço: " + prateleira[i].preco);
+      System.out.println("ID: " + i + "\nItem: " + prateleira[i].nome + "\nPreço: " + prateleira[i].preco);
     }
     System.out.println();
   }
 
-  static int buscarItem(Item[] prateleira, int ultimo) {
+  static int buscarItem() {
     System.out.println("\n------ Buscar Item ------\n");
     System.out.print("Nome: ");
     String nome = leia.nextLine().trim();
     for (int i = 0; i < ultimo; i++) {
-      if (prateleira[i].nome.equals(nome)) {
+      if (prateleira[i].nome.equalsIgnoreCase(nome)) {
         return i;
       }
     }
@@ -122,7 +121,7 @@ public class Item {
     System.out.println("Item: " + prateleira[pos].nome + "\nPreço: " + prateleira[pos].preco);
     System.out.print("Novo Nome: ");
     prateleira[pos].nome = leia.nextLine().trim();
-    System.out.print("Novo Preco: ");
+    System.out.print("Novo Preço: ");
     prateleira[pos].preco = leia.nextLine().trim();
   }
 
@@ -155,7 +154,7 @@ public class Item {
       Scanner in = new Scanner(new File("ItensPrateleira.xml"));
       StringBuilder sb = new StringBuilder();
       while (in.hasNext()) {
-        sb.append(in.next() + "\n");
+        sb.append(in.next() + " ");
       }
       in.close();
       return sb.toString();

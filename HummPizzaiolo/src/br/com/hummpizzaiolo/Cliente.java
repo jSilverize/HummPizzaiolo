@@ -15,17 +15,16 @@ public class Cliente {
   String nome;
   String telefone;
   String endereco;
+  
+  static String xml = lerXML();
+  
+  static Cliente[] lista = deserializarXML(xml);
+  
+  static int ultimo = verificarArray(lista);
 
-  public static void menu()  {
-
-    Cliente[] lista = new Cliente[50];
-
-    String xml = lerXML();
-
-    lista = deserializarXML(xml);
+  public static void menu() {
 
     int listaOpcoes;
-    int ultimo = verificarArray(lista);
 
     do {
       System.out.println("\n-------- HUMM PIZZAIOLO --------");
@@ -47,7 +46,7 @@ public class Cliente {
         case 2:
           //altera os dados de um cliente
           // busca o cliente a ser alterado
-          pos = buscarCliente(lista, ultimo);
+          pos = buscarCliente();
           if (pos > -1) {
             alterarCliente(lista, ultimo, pos);
             System.out.println("Cliente Alterado!");
@@ -58,7 +57,7 @@ public class Cliente {
         case 3:
           // remove um cliente
           // busca o cliente a ser removido
-          pos = buscarCliente(lista, ultimo);
+          pos = buscarCliente();
           if (pos > -1) {
             removerCliente(lista, ultimo, pos);
             ultimo--;
@@ -103,17 +102,17 @@ public class Cliente {
   static void listarItens(Cliente[] lista, int ultimo) {
     System.out.println("\n------ Lista de Clientes ------\n");
     for (int i = 0; i < ultimo; i++) {
-      System.out.println("Cliente: " + lista[i].nome + "\nTelefone: " + lista[i].telefone + "\nEndereco: " + lista[i].endereco);
+      System.out.println("ID: " + i + "\nNome: " + lista[i].nome + "\nTelefone: " + lista[i].telefone + "\nEndereco: " + lista[i].endereco);
     }
-    System.out.println();
+    System.out.println("\n");
   }
 
-  static int buscarCliente(Cliente[] lista, int ultimo) {
+  static int buscarCliente() {
     System.out.println("\n------ Buscar Cliente ------\n");
     System.out.print("Nome: ");
     String nome = leia.nextLine().trim();
     for (int i = 0; i < ultimo; i++) {
-      if (lista[i].nome.equals(nome)) {
+      if (lista[i].nome.equalsIgnoreCase(nome)) {
         return i;
       }
     }
@@ -160,7 +159,7 @@ public class Cliente {
       Scanner in = new Scanner(new File("ClientesCadastrados.xml"));
       StringBuilder sb = new StringBuilder();
       while (in.hasNext()) {
-        sb.append(in.next() + "\n");
+        sb.append(in.next() + " ");
       }
       in.close();
       return sb.toString();
