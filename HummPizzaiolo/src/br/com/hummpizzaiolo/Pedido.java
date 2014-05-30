@@ -10,7 +10,7 @@ import java.util.Scanner;
  * @author jsilverize & markaotribe
  */
 public class Pedido {
-  
+
   int id;
   Cliente cliente = new Cliente();
   Item[] itens = new Item[15];
@@ -44,38 +44,36 @@ public class Pedido {
           ultimo++;
           break;
         case 2:
-          //altera os dados de um pedido
+          // altera os dados de um pedido
           // busca o pedido a ser alterado
-          /*
-           pos = buscarPedido(fila, ultimo);
-           if (pos > -1) {
-           alterarPedido(fila, ultimo, pos);
-           System.out.println("Pedido Alterado!");
-           } else {
-           System.out.println("Pedido Inexistente!");
-           }
-           */
+          System.out.println("\tALTERAR");
+          pos = buscarPedido(fila);
+          if (pos > -1) {
+            alterarPedido(fila, ultimo, pos);
+            System.out.println("PEDIDO ALTERADO.");
+          } else {
+            System.out.println("PEDIDO INEXISTENTE.");
+          }
           break;
         case 3:
           // remove um pedido
           // busca o pedido a ser removido
-          /*
-           pos = buscarPedido(fila, ultimo);
-           if (pos > -1) {
-           removerPedido(fila, ultimo, pos);
-           ultimo--;
-           System.out.println("Pedido Removido!");
-           } else {
-           System.out.println("Pedido Inexistente!");
-           }
-           */
+          System.out.println("\tREMOVER");
+          pos = buscarPedido(fila);
+          if (pos > -1) {
+            removerPedido(fila, ultimo, pos);
+            ultimo--;
+            System.out.println("PEDIDO REMOVIDO.");
+          } else {
+            System.out.println("PEDIDO INEXISTENTE.");
+          }
           break;
         case 4:
           //lista pedidos
           listarPedidos(fila, ultimo);
           break;
         default:
-          System.out.println("Opcao Invalida!");
+          System.out.println("Opcao inválida.");
         case 0:
           // salva um arquivo XML com todos os itens registrados
           salvarPedidos(fila);
@@ -95,11 +93,11 @@ public class Pedido {
     byte opcaoMenu, i = 0;
     do {
       Item.listarItens(Item.prateleira, Item.ultimo);
-      System.out.print("Com base na lista exibida acima, \ndigite o ID do Item desejado:");
+      System.out.print("Com base na lista exibida acima, \ndigite o ID do Item desejado.\n(Um item por vez): ");
       pedido.itens[i] = Item.prateleira[leia.nextByte()];
       pedido.totalPedido += pedido.itens[i].preco;
-      i++;      
-      System.out.print("\n0 - FINALIZAR PEDIDO\n1 - ADICIONAR ITEM\n\nDigite sua opção: ");
+      i++;
+      System.out.print("\n0 - FECHAR ITENS DO PEDIDO e AVANÇAR\n1 - ADICIONAR MAIS ITENS\n\nDigite sua opção: ");
       opcaoMenu = leia.nextByte();
     } while (opcaoMenu > 0);
     pedido.cliente = Cliente.lista[Cliente.buscarCliente()];
@@ -121,34 +119,39 @@ public class Pedido {
         } else {
           j = 15;
         }
-      }      
+      }
       System.out.println("Total: R$ " + fila[i].totalPedido);
     }
     System.out.println();
   }
 
-  /*
-   static int buscarPedido(Pedido[] fila, int ultimo) {
-   System.out.println("\n------ Buscar Pedido ------\n");
-   System.out.print("Nome: ");
-   Cliente clienteBuscar = Cliente.buscarClienteNome();
-   for (int i = 0; i < ultimo; i++) {
-   if (fila[i].cliente == clienteBuscar) {
-   return i;
-   }
-   }
-   return -1;
-   }
-  
-   static void alterarPedido(Pedido[] fila, int ultimo, int pos) {
-   System.out.println("\n------ Alteração de Pedido ------\n");
-   System.out.println("Pedido: " + fila[pos].nome + "\nPreço: " + fila[pos].preco);
-   System.out.print("Novo Nome: ");
-   fila[pos].nome = leia.nextLine();
-   System.out.print("Novo Preco: ");
-   fila[pos].preco = leia.nextLine();
-   }
-   */
+  static void alterarPedido(Pedido[] fila, int ultimo, int pos) {
+    System.out.println("\n------ Alteração de Pedido ------\n");
+    fila[pos].totalPedido = 0;
+
+    for (int j = 0; j < fila[pos].itens.length; j++) {
+      fila[pos].itens[j] = null;
+    }
+
+    byte opcaoMenu, i = 0;
+    do {
+      Item.listarItens(Item.prateleira, Item.ultimo);
+      System.out.print("Digite o ID do NOVO Item desejado: ");
+      fila[pos].itens[i] = Item.prateleira[leia.nextByte()];
+      fila[pos].totalPedido += fila[pos].itens[i].preco;
+      i++;
+      System.out.print("\n0 - FINALIZAR PEDIDO\n1 - ADICIONAR ITEM\n\nDigite sua opção: ");
+      opcaoMenu = leia.nextByte();
+    } while (opcaoMenu > 0);
+  }
+
+  static int buscarPedido(Pedido[] fila) {
+    listarPedidos(fila, Pedido.ultimo);
+    System.out.print("\nID do Pedido que deseja alterar: ");
+    int alterarPedido = leia.nextInt();
+    return alterarPedido;
+  }
+
   static void removerPedido(Pedido[] fila, int ultimo, int pos) {
     for (int i = pos + 1; i < ultimo; i++) {
       fila[i - 1] = fila[i];

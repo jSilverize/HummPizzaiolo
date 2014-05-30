@@ -50,9 +50,9 @@ public class Cliente {
           pos = buscarCliente();
           if (pos > -1) {
             alterarCliente(lista, ultimo, pos);
-            System.out.println("Cliente Alterado!");
+            System.out.println("CLIENTE ALTERADO.");
           } else {
-            System.out.println("Cliente Inexistente!");
+            System.out.println("CLIENTE INEXISTENTE.");
           }
           break;
         case 3:
@@ -62,9 +62,9 @@ public class Cliente {
           if (pos > -1) {
             removerCliente(lista, ultimo, pos);
             ultimo--;
-            System.out.println("Cliente Removido!");
+            System.out.println("CLIENTE REMOVIDO.");
           } else {
-            System.out.println("Cliente Inexistente!");
+            System.out.println("CLIENTE INEXISTENTE.");
           }
           break;
         case 4:
@@ -72,7 +72,7 @@ public class Cliente {
           listarClientes(lista, ultimo);
           break;
         default:
-          System.out.println("Opcao Invalida!");
+          System.out.println("Opção inválida.");
         case 0:
           // salva um arquivo XML com todos os cliens registrados
           salvarClientes(lista);
@@ -102,40 +102,29 @@ public class Cliente {
   }
 
   static void listarClientes(Cliente[] lista, int ultimo) {
-    System.out.println("\n------ Lista de Clientes ------\n");
+    System.out.println("\n------ Lista de Clientes ------");
     for (int i = 0; i < ultimo; i++) {
-      System.out.println("ID: " + lista[i].id + "\nNome: " + lista[i].nome + "\nTelefone: " + lista[i].telefone + "\nEndereco: " + lista[i].endereco);
+      System.out.println("\nID de Cliente: " + lista[i].id + "\nNome: " + lista[i].nome);
+      System.out.println("Telefone: " + lista[i].telefone + "\nEndereco: " + lista[i].endereco);
     }
     System.out.println("\n");
   }
 
   static int buscarCliente() {
     System.out.println("\n------ Buscar Cliente ------\n");
-    System.out.print("Nome: ");
-    String nome = leia.nextLine().trim();
+    System.out.print("Telefone: ");
+    String telefone = leia.nextLine().trim();
     for (int i = 0; i < ultimo; i++) {
-      if (lista[i].nome.equalsIgnoreCase(nome)) {
+      if (lista[i].telefone.equalsIgnoreCase(telefone)) {
         return i;
       }
     }
     return -1;
   }
-  
-  static Cliente buscarClienteNome() {
-    System.out.println("\n------ Buscar Cliente ------\n");
-    System.out.print("Nome: ");
-    String nome = leia.nextLine().trim();
-    for (int i = 0; i < ultimo; i++) {
-      if (lista[i].nome.equalsIgnoreCase(nome)) {
-        return lista[i];
-      }
-    }
-    return lista[-1];
-  }
 
   static void alterarCliente(Cliente[] lista, int ultimo, int pos) {
     System.out.println("\n------ Alteração de Cliente ------\n");
-    System.out.println("ID: " + lista[pos].id + "\nCliente: " + lista[pos].nome + "\nTelefone: " + lista[pos].telefone + "\nEndereco: " + lista[pos].endereco);
+    System.out.println("ID de Cliente: " + lista[pos].id + "\nCliente: " + lista[pos].nome + "\nTelefone: " + lista[pos].telefone + "\nEndereco: " + lista[pos].endereco);
     System.out.print("Novo Nome: ");
     lista[pos].nome = leia.nextLine();
     System.out.print("Novo Telefone: ");

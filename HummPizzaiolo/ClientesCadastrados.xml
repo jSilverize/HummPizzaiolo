@@ -1,15 +1,15 @@
 <br.com.hummpizzaiolo.Cliente-array>
   <br.com.hummpizzaiolo.Cliente>
     <id>0</id>
-    <nome>Marcos Vinicius</nome>
+    <nome>Marcos Vinicius Nicacio</nome>
     <telefone>5555-5555</telefone>
-    <endereco>Casa</endereco>
+    <endereco>Interlagos</endereco>
   </br.com.hummpizzaiolo.Cliente>
   <br.com.hummpizzaiolo.Cliente>
     <id>1</id>
-    <nome>Udimberto Junior</nome>
+    <nome>Udimberto Silvestre Junior</nome>
     <telefone>4444-4444</telefone>
-    <endereco>Casa</endereco>
+    <endereco>M&apos;Boi Mirim</endereco>
   </br.com.hummpizzaiolo.Cliente>
   <null/>
   <null/>

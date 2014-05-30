@@ -98,9 +98,9 @@ public class Item {
   }
 
   static void listarItens(Item[] prateleira, int ultimo) {
-    System.out.println("\n------ Lista de Items ------\n");
+    System.out.println("\n------ Lista de Items ------");
     for (int i = 0; i < ultimo; i++) {
-      System.out.println("ID: " + i + "\nItem: " + prateleira[i].nome + "\nPreço: " + prateleira[i].preco);
+      System.out.println("\nID: " + i + "\nItem: " + prateleira[i].nome + "\nPreço: R$ " + prateleira[i].preco);
     }
     System.out.println();
   }
