@@ -94,7 +94,9 @@ public class Pedido {
     pedido.totalPedido = 0;
     byte opcaoMenu, i = 0;
     do {
-      pedido.itens[i] = Item.prateleira[Item.buscarItem()];
+      Item.listarItens(Item.prateleira, Item.ultimo);
+      System.out.print("Com base na lista exibida acima, \ndigite o ID do Item desejado:");
+      pedido.itens[i] = Item.prateleira[leia.nextByte()];
       pedido.totalPedido += pedido.itens[i].preco;
       i++;      
       System.out.print("\n0 - FINALIZAR PEDIDO\n1 - ADICIONAR ITEM\n\nDigite sua opção: ");
