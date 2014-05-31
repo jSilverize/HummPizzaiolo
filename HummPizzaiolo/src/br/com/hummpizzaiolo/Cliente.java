@@ -11,16 +11,16 @@ import java.util.Scanner;
  * @author jsilverize & markaotribe
  */
 public class Cliente {
-  
+
   int id;
   String nome;
   String telefone;
   String endereco;
-  
+
   static String xml = lerXML();
-  
+
   static Cliente[] lista = deserializarXML(xml);
-  
+
   static int ultimo = verificarArray(lista);
 
   public static void menu() {
@@ -43,6 +43,8 @@ public class Cliente {
           Cliente cli = lerCliente(ultimo);
           adicionarCliente(lista, ultimo, cli);
           ultimo++;
+          // salva um arquivo XML com todos os cliens registrados
+          salvarClientes(lista);
           break;
         case 2:
           //altera os dados de um cliente
@@ -53,7 +55,21 @@ public class Cliente {
             System.out.println("CLIENTE ALTERADO.");
           } else {
             System.out.println("CLIENTE INEXISTENTE.");
+            /*int opcaoMenu;
+            System.out.print("Deseja cadastrar um novo Cliente?\n0 - NÃO\n1 - SIM\nDigite a opção: ");
+            opcaoMenu = leia.nextInt();
+            if (opcaoMenu == 1) {
+              // adicionar cliente
+              Cliente clie = lerCliente(ultimo);
+              adicionarCliente(lista, ultimo, clie);
+              ultimo++;
+              // salva um arquivo XML com todos os cliens registrados
+              salvarClientes(lista);
+            }
+            */
           }
+          // salva um arquivo XML com todos os cliens registrados
+          salvarClientes(lista);
           break;
         case 3:
           // remove um cliente
@@ -66,6 +82,8 @@ public class Cliente {
           } else {
             System.out.println("CLIENTE INEXISTENTE.");
           }
+          // salva um arquivo XML com todos os cliens registrados
+          salvarClientes(lista);
           break;
         case 4:
           //lista clientes
@@ -74,8 +92,6 @@ public class Cliente {
         default:
           System.out.println("Opção inválida.");
         case 0:
-          // salva um arquivo XML com todos os cliens registrados
-          salvarClientes(lista);
           break;
       }
 
@@ -128,7 +144,7 @@ public class Cliente {
     System.out.print("Novo Nome: ");
     lista[pos].nome = leia.nextLine();
     System.out.print("Novo Telefone: ");
-    lista[pos].telefone = leia.nextLine().trim();    
+    lista[pos].telefone = leia.nextLine().trim();
     System.out.print("Novo Endereco: ");
     lista[pos].endereco = leia.nextLine().trim();
   }

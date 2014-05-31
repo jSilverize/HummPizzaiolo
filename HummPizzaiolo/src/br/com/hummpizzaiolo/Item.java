@@ -42,6 +42,8 @@ public class Item {
           Item it = lerItem();
           adicionarItem(prateleira, ultimo, it);
           ultimo++;
+          // salva um arquivo XML com todos os itens registrados
+          salvarItens(prateleira);
           break;
         case 2:
           //altera os dados de um item
@@ -53,6 +55,8 @@ public class Item {
           } else {
             System.out.println("Item Inexistente!");
           }
+          // salva um arquivo XML com todos os itens registrados
+          salvarItens(prateleira);
           break;
         case 3:
           // remove um item
@@ -65,6 +69,8 @@ public class Item {
           } else {
             System.out.println("Item Inexistente!");
           }
+          // salva um arquivo XML com todos os itens registrados
+          salvarItens(prateleira);
           break;
         case 4:
           //lista items
@@ -73,8 +79,6 @@ public class Item {
         default:
           System.out.println("Opcao Invalida!");
         case 0:
-          // salva um arquivo XML com todos os itens registrados
-          salvarItens(prateleira);
           break;
       }
 
@@ -85,9 +89,10 @@ public class Item {
   // FUNÇÕES de ITEM
   static Item lerItem() {
     Item item = new Item();
+    item.id = Item.ultimo;
     System.out.println("\n------ Novo Item ------");
     System.out.print("Nome: ");
-    item.nome = leia.nextLine().trim();
+    item.nome = leia.nextLine();
     System.out.print("Preco: ");
     item.preco = leia.nextFloat();
     return item;
@@ -100,7 +105,7 @@ public class Item {
   static void listarItens(Item[] prateleira, int ultimo) {
     System.out.println("\n------ Lista de Items ------");
     for (int i = 0; i < ultimo; i++) {
-      System.out.println("\nID: " + i + "\nItem: " + prateleira[i].nome + "\nPreço: R$ " + prateleira[i].preco);
+      System.out.println("\nID: " + prateleira[i].id + "\nItem: " + prateleira[i].nome + "\nPreço: R$ " + prateleira[i].preco);
     }
     System.out.println();
   }

@@ -3,14 +3,19 @@
     <id>0</id>
     <cliente>
       <id>0</id>
-      <nome>Marcos Vinicius</nome>
+      <nome>Marcos Vinicius Nicacio</nome>
       <telefone>5555-5555</telefone>
-      <endereco>Casa</endereco>
+      <endereco>Interlagos</endereco>
     </cliente>
     <itens>
       <br.com.hummpizzaiolo.Item>
         <id>0</id>
         <nome>Pizza de Mussarela</nome>
+        <preco>20.0</preco>
+      </br.com.hummpizzaiolo.Item>
+      <br.com.hummpizzaiolo.Item>
+        <id>2</id>
+        <nome>Pizza de Flango com Catupily</nome>
         <preco>25.0</preco>
       </br.com.hummpizzaiolo.Item>
       <null/>
@@ -26,29 +31,24 @@
       <null/>
       <null/>
       <null/>
-      <null/>
     </itens>
-    <totalPedido>25.0</totalPedido>
+    <totalPedido>45.0</totalPedido>
   </br.com.hummpizzaiolo.Pedido>
   <br.com.hummpizzaiolo.Pedido>
     <id>1</id>
     <cliente>
       <id>1</id>
-      <nome>Udimberto Junior</nome>
+      <nome>Udimberto Silvestre Junior</nome>
       <telefone>4444-4444</telefone>
-      <endereco>Casa</endereco>
+      <endereco>M&apos;Boi Mirim</endereco>
     </cliente>
     <itens>
       <br.com.hummpizzaiolo.Item>
         <id>1</id>
         <nome>Pizza de Calabresa</nome>
-        <preco>25.0</preco>
+        <preco>20.0</preco>
       </br.com.hummpizzaiolo.Item>
-      <br.com.hummpizzaiolo.Item>
-        <id>3</id>
-        <nome>Pizza de Atum</nome>
-        <preco>40.0</preco>
-      </br.com.hummpizzaiolo.Item>
+      <null/>
       <null/>
       <null/>
       <null/>
@@ -63,7 +63,7 @@
       <null/>
       <null/>
     </itens>
-    <totalPedido>65.0</totalPedido>
+    <totalPedido>20.0</totalPedido>
   </br.com.hummpizzaiolo.Pedido>
   <null/>
   <null/>

@@ -42,6 +42,8 @@ public class Pedido {
           Pedido it = lerPedido(ultimo);
           adicionarPedido(fila, ultimo, it);
           ultimo++;
+          // salva um arquivo XML com todos os itens registrados
+          salvarPedidos(fila);
           break;
         case 2:
           // altera os dados de um pedido
@@ -54,6 +56,8 @@ public class Pedido {
           } else {
             System.out.println("PEDIDO INEXISTENTE.");
           }
+          // salva um arquivo XML com todos os itens registrados
+          salvarPedidos(fila);
           break;
         case 3:
           // remove um pedido
@@ -67,6 +71,8 @@ public class Pedido {
           } else {
             System.out.println("PEDIDO INEXISTENTE.");
           }
+          // salva um arquivo XML com todos os itens registrados
+          salvarPedidos(fila);
           break;
         case 4:
           //lista pedidos
@@ -75,8 +81,6 @@ public class Pedido {
         default:
           System.out.println("Opcao inválida.");
         case 0:
-          // salva um arquivo XML com todos os itens registrados
-          salvarPedidos(fila);
           break;
       }
 
