@@ -14,7 +14,7 @@ public class HummPizzaiolo {
 
     do {
 
-      System.out.println("\n-------- HUMM PIZZAIOLO --------");
+      System.out.println("\n-------- HUMM PIZZAIOLO, oi --------");
       System.out.println("\n\t  MENU PRINCIPAL");
       System.out.println("\n1 - PEDIDOS\n2 - CLIENTES\n3 - ITENS\n\n0 - FINALIZAR PROGRAMA\n");
       System.out.print("Digite uma das opções: ");
